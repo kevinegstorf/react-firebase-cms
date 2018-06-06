@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Card from "@material-ui/core/Card";
 import styles from "./Admin.css";
-import Button from "../components/UI/Button/Button";
-import Input from "../components/UI/Input/Input";
-import validityChecker from "../utils/validityChecker";
+import Button from "../../components/UI/Button/Button";
+import Input from "../../components/UI/Input/Input";
+import validityChecker from "../../utils/validityChecker";
 
 export default class Admin extends Component {
   state = {
