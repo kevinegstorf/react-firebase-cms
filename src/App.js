@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import Admin from './containers/Admin'
-import './App.css';
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
+import Admin from "./containers/Admin";
 
 class App extends Component {
   render() {
     return (
-      <Admin/>
+      <div>
+        <Switch>
+          <Route path="/admin" exact component={Admin} />
+        </Switch>
+      </div>
     );
   }
 }
