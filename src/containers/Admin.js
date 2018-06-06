@@ -37,16 +37,15 @@ export default class Admin extends Component {
   };
 
   inputChangedHandler = (event, inputIdentifier) => {
-    const updatedOrderForm = {
+    const updatedLoginForm = {
       ...this.state.controls
     };
 
     const updatedFormElement = {
-      ...updatedOrderForm[inputIdentifier]
+      ...updatedLoginForm[inputIdentifier]
     };
 
     updatedFormElement.value = event.target.value;
-    console.log("updatedFormElement", updatedFormElement.value);
     updatedFormElement.valid = validityChecker(
       updatedFormElement.value,
       updatedFormElement.validation
@@ -55,13 +54,27 @@ export default class Admin extends Component {
 
     console.log("Touched", updatedFormElement.touched);
 
-    updatedOrderForm[inputIdentifier] = updatedFormElement;
+    updatedLoginForm[inputIdentifier] = updatedFormElement;
 
     let formIsValid = true;
-    for (let inputIdentifier in updatedOrderForm) {
-      formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+    for (let inputIdentifier in updatedLoginForm) {
+      formIsValid = updatedLoginForm[inputIdentifier].valid && formIsValid;
     }
-    this.setState({ controls: updatedOrderForm, formIsValid: formIsValid });
+    this.setState({ controls: updatedLoginForm, formIsValid: formIsValid });
+  };
+
+  submitHandler = event => {
+    console.log("clickerdeklik");
+    console.log(
+      "value",
+      this.state.controls.email.value,
+      this.state.controls.password.value
+    );
+    event.preventDefault();
+    // this.props.onAuth(
+    //   this.state.controls.email.value,
+    //   this.state.controls.password.value
+    // );
   };
 
   render() {
@@ -87,11 +100,15 @@ export default class Admin extends Component {
       <div className={styles.admin}>
         <Card className={styles.card}>
           <h1 className={styles.header}>Admin Login</h1>
-          <form className={styles.form}>
+          <form onSubmit={this.handleClick} className={styles.form}>
             <div className={styles.input}>
               {input}
               <div className={styles.button}>
-                <Button variant="contained" className={styles.button}>
+                <Button
+                  clicked={this.submitHandler}
+                  variant="contained"
+                  className={styles.button}
+                >
                   Sign In
                 </Button>
               </div>
