@@ -1,14 +1,21 @@
 import React, { Component } from "react";
+import { Router } from "react-router";
 import { Route, Switch } from "react-router-dom";
-import Admin from "./containers/Admin";
+import Admin from "./containers/Admin/Admin";
+import CMSForm from "./containers/CMSForm/CMSForm";
+import HomePage from "./containers/HomePage/HomePage";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Switch>
-          <Route path="/admin" exact component={Admin} />
-        </Switch>
+        <Router history={createHistory()}>
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/admin" exact component={Admin} />
+            <Route path="/cms" exact component={CMSForm} />
+          </Switch>
+        </Router>
       </div>
     );
   }
