@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Router } from "react-router";
 import { Route, Switch } from "react-router-dom";
-import Admin from "./containers/Admin/Admin";
+import Admin from "./containers/Admin/Admin.js";
 import CMSForm from "./containers/CMSForm/CMSForm";
 import HomePage from "./containers/HomePage/HomePage";
 
