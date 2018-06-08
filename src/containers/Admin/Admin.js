@@ -4,6 +4,7 @@ import styles from "./Admin.css";
 import Button from "../../components/UI/Button/Button";
 import Input from "../../components/UI/Input/Input";
 import validityChecker from "../../utils/validityChecker";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 export default class Admin extends Component {
   state = {
@@ -98,23 +99,31 @@ export default class Admin extends Component {
 
     return (
       <div className={styles.admin}>
-        <Card className={styles.card}>
-          <h1 className={styles.header}>Admin Login</h1>
-          <form onSubmit={this.handleClick} className={styles.form}>
-            <div className={styles.input}>
-              {input}
-              <div className={styles.button}>
-                <Button
-                  clicked={this.submitHandler}
-                  variant="contained"
-                  className={styles.button}
-                >
-                  Sign In
-                </Button>
+        <ReactCSSTransitionGroup
+          transitionAppear={true}
+          transitionAppearTimeout={1000}
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={1000}
+          transitionName={styles}
+        >
+          <Card className={styles.card}>
+            <h1 className={styles.header}>Admin Login</h1>
+            <form onSubmit={this.handleClick} className={styles.form}>
+              <div className={styles.input}>
+                {input}
+                <div className={styles.button}>
+                  <Button
+                    clicked={this.submitHandler}
+                    variant="contained"
+                    className={styles.button}
+                  >
+                    Sign In
+                  </Button>
+                </div>
               </div>
-            </div>
-          </form>
-        </Card>
+            </form>
+          </Card>
+        </ReactCSSTransitionGroup>
       </div>
     );
   }
