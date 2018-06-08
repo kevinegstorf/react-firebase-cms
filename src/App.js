@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Router } from "react-router";
 import history from "./history";
 import { Route, Switch, Router } from "react-router-dom";
 import Admin from "./containers/Admin/Admin";
