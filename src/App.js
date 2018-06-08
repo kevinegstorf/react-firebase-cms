@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Router>
+        <Router history={browserHistory}>
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/admin" exact component={Admin} />
