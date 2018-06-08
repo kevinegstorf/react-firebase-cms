@@ -5,6 +5,8 @@ import Admin from "./containers/Admin/Admin";
 import CMSForm from "./containers/CMSForm/CMSForm";
 import HomePage from "./containers/HomePage/HomePage";
 
+const browserHistory = "";
+
 class App extends Component {
   render() {
     return (
