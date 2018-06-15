@@ -6,7 +6,9 @@ import Adapter from "enzyme-adapter-react-16";
 import Button from "./Button";
 
 configure({ adapter: new Adapter() });
-const wrapper = shallow(<Button />);
+const clicked = sinon.spy();
+
+const wrapper = shallow(<Button onClick={clicked} />);
 
 wrapper.setProps({
   variant: "contained",
@@ -19,13 +21,18 @@ describe("<Button>", () => {
   });
 
   it("should be rendered with the correct props", () => {
-    // console.log(wrapper.debug());
-    // console.log(wrapper.props().variant);
     expect(wrapper.props().variant).toBeDefined();
     expect(wrapper.props().disabled).toBeDefined();
 
     expect(wrapper.prop("variant")).toEqual("contained");
     expect(wrapper.prop("disabled")).toEqual("disabled");
   });
-  // todo test click event
+
+  it("should call click", () => {
+    const onButtonClick = jest.fn();
+
+    const wrapper = shallow(<wrapper onClick={onButtonClick} />);
+    wrapper.find("wrapper").simulate("click");
+    expect(onButtonClick.mock.calls.length).toBe(1);
+  });
 });
